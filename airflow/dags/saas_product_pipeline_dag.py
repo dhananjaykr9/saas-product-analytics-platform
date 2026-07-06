@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from airflow.decorators import dag
+from airflow.decorators import dag, task
 from airflow.providers.amazon.aws.operators.glue import GlueJobOperator
 from airflow.providers.amazon.aws.operators.glue_crawler import GlueCrawlerOperator
 from airflow.providers.amazon.aws.operators.lambda_function import (
@@ -16,6 +16,16 @@ from airflow.providers.amazon.aws.operators.lambda_function import (
     tags=["saas", "data-engineering", "aws"],
 )
 def saas_product_pipeline():
+
+    @task
+    def start():
+        print("Starting SaaS Product Pipeline...")
+
+    @task
+    def end():
+        print("Pipeline completed successfully.")
+
+    start_task = start()
 
     generate_saas_events = LambdaInvokeFunctionOperator(
         task_id="generate_saas_events",
@@ -34,8 +44,16 @@ def saas_product_pipeline():
         },
     )
 
-    # Set task dependencies
-    generate_saas_events >> run_glue_etl >> run_glue_crawler
+    end_task = end()
+
+    # Task dependencies
+    (
+        start_task
+        >> generate_saas_events
+        >> run_glue_etl
+        >> run_glue_crawler
+        >> end_task
+    )
 
 
 dag = saas_product_pipeline()
