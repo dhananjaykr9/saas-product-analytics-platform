@@ -11,3 +11,6 @@ wheels/
 
 # Environment files
 .env
+
+# Interview guide (local only)
+interview_preparation_guide.md
