@@ -28,36 +28,6 @@ An end-to-end serverless AWS Data Engineering pipeline designed to simulate, ing
 
 ![Pipeline Architecture](architecture/architecture.png)
 
-```mermaid
-graph TD
-    classDef aws fill:#FF9900,stroke:#333,stroke-width:2px,color:#fff;
-    classDef local fill:#017CEE,stroke:#333,stroke-width:2px,color:#fff;
-    
-    subgraph Local Environment [Docker Compose Setup]
-        Airflow[Apache Airflow Scheduler & Worker]:::local
-    end
-    
-    subgraph AWS Cloud [AWS Serverless Layer]
-        Lambda[AWS Lambda Event Generator]:::aws
-        S3Raw[Amazon S3 Raw Layer JSON]:::aws
-        GlueETL[AWS Glue PySpark Job]:::aws
-        S3Proc[Amazon S3 Processed Layer Parquet]:::aws
-        GlueCrawler[AWS Glue Crawler]:::aws
-        Catalog[AWS Glue Data Catalog]:::aws
-        Athena[Amazon Athena SQL Engine]:::aws
-    end
-    
-    Airflow -->|1. Triggers| Lambda
-    Lambda -->|2. Ingests raw JSON| S3Raw
-    Airflow -->|3. Triggers| GlueETL
-    GlueETL -->|4. Reads JSON| S3Raw
-    GlueETL -->|5. Writes Parquet| S3Proc
-    Airflow -->|6. Triggers| GlueCrawler
-    GlueCrawler -->|7. Scans partitions| S3Proc
-    GlueCrawler -->|8. Updates Schema| Catalog
-    Athena -->|9. Queries Metadata| Catalog
-    Athena -->|10. Reads Parquet| S3Proc
-```
 
 ---
 
