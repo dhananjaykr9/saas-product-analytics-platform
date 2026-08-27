@@ -26,6 +26,8 @@ An end-to-end serverless AWS Data Engineering pipeline designed to simulate, ing
 
 ## Project Architecture
 
+![Pipeline Architecture](architecture/architecture.png)
+
 ```mermaid
 graph TD
     classDef aws fill:#FF9900,stroke:#333,stroke-width:2px,color:#fff;
