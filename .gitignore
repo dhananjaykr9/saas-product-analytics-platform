@@ -14,3 +14,6 @@ wheels/
 
 # Interview guide (local only)
 interview_preparation_guide.md
+
+# Airflow runtime logs
+airflow/logs/
