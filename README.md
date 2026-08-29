@@ -58,13 +58,17 @@ saas-product-analytics-platform/
 │   └── lambda_function.py
 ├── screenshots/
 │   ├── airflow_dag_graph_view.png
+│   ├── airflow_pipeline_graph_diagram.png
 │   ├── athena_query_results.png
 │   ├── glue_crawler_success.png
 │   ├── glue_data_catalog_table.png
 │   ├── glue_etl_job_success.png
+│   ├── glue_table_processed_schema.png
 │   ├── lambda_function.png
 │   ├── lambda_success_logs.png
 │   ├── s3_bucket_structure.png
+│   ├── s3_processed_parquet_file.png
+│   ├── s3_raw_json_events.png
 │   └── successful_dag_run.png
 ├── sql/
 │   ├── analytics_queries.sql
@@ -266,12 +270,16 @@ HAVING COUNT(*) > 1;
 
 The `screenshots/` directory contains actual verification images of the pipeline executions:
 
-- [s3_bucket_structure.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/s3_bucket_structure.png) — S3 bucket structure and raw/processed folder layout.
-- [lambda_function.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/lambda_function.png) — AWS Lambda function settings and event generation code configurations.
-- [lambda_success_logs.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/lambda_success_logs.png) — AWS Lambda event generation logs and payload size outputs in CloudWatch.
-- [glue_etl_job_success.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/glue_etl_job_success.png) — Successful execution graphs of the AWS Glue PySpark ETL job.
-- [glue_crawler_success.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/glue_crawler_success.png) — AWS Glue Crawler run details and metadata catalog sync records.
-- [glue_data_catalog_table.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/glue_data_catalog_table.png) — Mapped table schemas and active partitions inside the AWS Glue Data Catalog.
-- [athena_query_results.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/athena_query_results.png) — Query verification results and analytics metrics outputs in Amazon Athena.
 - [airflow_dag_graph_view.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/airflow_dag_graph_view.png) — Executed task dependencies graph view in the Airflow Web interface.
-- [successful_dag_run.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/successful_dag_run.png) — Active historical status overview of the successful local Airflow DAG run.
+- [successful_dag_run.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/successful_dag_run.png) — Successful status overview of the local Airflow DAG run with all green tasks.
+- [airflow_pipeline_graph_diagram.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/airflow_pipeline_graph_diagram.png) — Clean architectural graph diagram export of the Airflow DAG pipeline tasks.
+- [s3_bucket_structure.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/s3_bucket_structure.png) — S3 bucket structure and directory layout (`raw/`, `processed/`, `athena-results/`, `scripts/`, `temp/`).
+- [s3_raw_json_events.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/s3_raw_json_events.png) — S3 raw storage tier displaying partitioned JSON event files.
+- [s3_processed_parquet_file.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/s3_processed_parquet_file.png) — S3 processed storage tier displaying date-partitioned Snappy Parquet files.
+- [lambda_function.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/lambda_function.png) — AWS Lambda function code and configuration settings.
+- [lambda_success_logs.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/lambda_success_logs.png) — CloudWatch execution logs showing successful SaaS event generation and runtime metrics.
+- [glue_etl_job_success.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/glue_etl_job_success.png) — Successful execution run details and worker metrics for the AWS Glue PySpark ETL job.
+- [glue_crawler_success.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/glue_crawler_success.png) — AWS Glue Crawler run history and metadata catalog synchronization records.
+- [glue_data_catalog_table.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/glue_data_catalog_table.png) — Schema and date partition definitions for table `saas_events` in AWS Glue Data Catalog.
+- [glue_table_processed_schema.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/glue_table_processed_schema.png) — S3-backed schema view for table `processed` in AWS Glue Data Catalog.
+- [athena_query_results.png](file:///d:/AI%20Engineer/Data%20Engineering/Projects/saas-product-analytics-platform/screenshots/athena_query_results.png) — Interactive SQL query execution and metrics output in Amazon Athena.
