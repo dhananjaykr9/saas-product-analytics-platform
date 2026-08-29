@@ -73,7 +73,7 @@ saas-product-analytics-platform/
 ├── sql/
 │   ├── analytics_queries.sql
 │   └── validation_queries.sql
-├── .env
+├── .env.example
 ├── .gitignore
 ├── .python-version
 ├── docker-compose.yml
@@ -166,7 +166,12 @@ The AWS Glue PySpark job enforces the following pipeline schema rules:
 
 ### Step 1: Configure Your Environment File
 
-Create a file named `.env` in the project's root directory containing the required properties:
+Copy the template file `.env.example` to create your local `.env`:
+```bash
+cp .env.example .env
+```
+
+Populate `.env` with your desired configuration and AWS credentials:
 
 ```env
 # Airflow deployment configuration
